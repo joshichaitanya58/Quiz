@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background image -->
+    <img src="mainbg.jpg" alt="backgound image" class="bg">
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="KBC Logo">
+            <button class="note">Click me! or logo to continue</button>
+        </div>
+        <!-- rules  -->
+        <div class="rules">
+            <h2 style="text-align: center;">Rules</h2>
+            <ul>
+                <li>Their are <b>Unlimited</b> questions in this game.</li> <br>
+                
+                <li>Only Two lifelines</li>
+            </ul>
+            <button class="next"> Next</button>
+        </div>
+        <!-- welcome -->
+        <div class="container" id="welcome">
+            <h1>Welcome to the KBC</h1>
+            <p>Are you ready to play the ultimate trivia game? Press the start button to begin.</p>
+            <button id="startButton"> Start </button>
+        </div>
+    </div>
+    <!-- main game -->
+    <div class="poll-container" style="display:none; margin-top: 1em; width: 300px; background-color: rgb(111, 111, 122);">
+   <div>Option 1 <div id="poll-option1" style="background-color: lightblue; height: 20px; width:0%;">0%</div></div>
+   <div>Option 2 <div id="poll-option2" style="background-color: lightgreen; height: 20px; width:0%;">0%</div></div>
+   <div>Option 3 <div id="poll-option3" style="background-color: lightcoral; height: 20px; width:0%;">0%</div></div>
+   <div>Option 4 <div id="poll-option4" style="background-color: lightgoldenrodyellow; height: 20px; width:0%;">0%</div></div>
+ </div>
+    <div class="container" id="game">
+        <div class="timer">
+            <p id="run-time">0</p>
+        </div>
+        <div class="lifelines">
+            <button id="fifty-fifty"><img src="50-50.jpg" alt="50-50 lifeline" class="fifty_fifty"> <br>
+                <p class="name1">Fifty Fifty</p>
+            </button>
+            <button id="ask-the-audience"><img src="audiance_poll.jpg" alt="Ask the audience" class="audience"> <br>
+                <p class="name2">Ask the audience</p>
+            </button>
+        </div>
+        <div class="easy-level">
+            <!-- <img src="questionbg.jpeg" alt="Question background" class="questionbackground"> -->
+            <p class="ques-easy"> भारत का राष्ट्रीय खेल क्या है? </p> <br>
+            <button class="options" id="option1">क्रिकेट</button>
+            <button class="options" id="option2">फुटबॉल</button> <br>
+            <button class="options" id="option3">हॉकी</button>
+            <button class="options" id="option4">कबड्डी</button>
+        </div>
+        <div id="repeat">
+            <button>If question is repeat then click me! (only 5 times)</button>
+        </div>
+      
+
+    </div>
+
+   <div class="button">
+    <button class="refresh">Play again</button>
+   </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
