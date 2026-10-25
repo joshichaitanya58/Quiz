@@ -4,73 +4,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBC</title>
+    <title>KBC - Kaun Banega Crorepati Quiz</title>
+    <!-- Google Fonts for English and Hindi (Devanagari) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c6.png">
 </head>
 
 <body>
-    <!-- Background image -->
-    <img src="mainbg.jpg" alt="backgound image" class="bg">
-    <div class="container">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="logo.png" alt="KBC Logo">
-            <button class="note">Click me! or logo to continue</button>
-        </div>
-        <!-- rules  -->
-        <div class="rules">
-            <h2 style="text-align: center;">Rules</h2>
-            <ul>
-                <li>Their are <b>Unlimited</b> questions in this game.</li> <br>
-                
-                <li>Only Two lifelines</li>
+    <!-- Background Image & Dark Gradient Overlay -->
+    <img src="mainbg.jpg" alt="background image" class="bg">
+    <div class="bg-overlay"></div>
+
+    <!-- Top Navigation Bar (Audio Control) -->
+    <header class="top-nav">
+        <div class="brand-badge">🏆 KBC</div>
+        <button id="mute-btn" class="icon-btn" title="Toggle Sound">🔊 Sound On</button>
+    </header>
+
+    <main class="app-wrapper">
+
+        <!-- SCREEN 1: Splash / Logo Screen -->
+        <section id="screen-logo" class="card-screen active">
+            <div class="logo-wrapper" id="logo-trigger">
+                <img src="logo.png" alt="Quiz Logo" class="main-logo">
+            </div>
+            <h1 class="glow-title">कौन बनेगा विजेता</h1>
+            <p class="subtitle">Test your knowledge across India, Science, Tech & History</p>
+            <button id="continue-btn" class="btn-primary pulse-btn">Click to Continue</button>
+        </section>
+
+        <!-- SCREEN 2: Rules Screen -->
+        <section id="screen-rules" class="card-screen">
+            <h2 class="section-title">📜 Game Rules</h2>
+            <ul class="rules-list">
+                <li>
+                    <span class="rule-icon">♾️</span>
+                    <div><strong>Unlimited Questions:</strong> Keep answering correctly to build your winning streak and prize score.</div>
+                </li>
+                <li>
+                    <span class="rule-icon">⏱️</span>
+                    <div><strong>45 Seconds Timer:</strong> Every question has a 45-second countdown. Answer before time runs out!</div>
+                </li>
+                <li>
+                    <span class="rule-icon">🛟</span>
+                    <div><strong>2 Lifelines:</strong> Use <b>50:50</b> (removes 2 wrong answers) and <b>Audience Poll</b> once per game.</div>
+                </li>
+                <li>
+                    <span class="rule-icon">⏭️</span>
+                    <div><strong>5 Question Skips:</strong> Stuck or see a repeated question? You can skip up to 5 times.</div>
+                </li>
             </ul>
-            <button class="next"> Next</button>
-        </div>
-        <!-- welcome -->
-        <div class="container" id="welcome">
-            <h1>Welcome to the KBC</h1>
-            <p>Are you ready to play the ultimate trivia game? Press the start button to begin.</p>
-            <button id="startButton"> Start </button>
-        </div>
-    </div>
-    <!-- main game -->
-    <div class="poll-container" style="display:none; margin-top: 1em; width: 300px; background-color: rgb(111, 111, 122);">
-   <div>Option 1 <div id="poll-option1" style="background-color: lightblue; height: 20px; width:0%;">0%</div></div>
-   <div>Option 2 <div id="poll-option2" style="background-color: lightgreen; height: 20px; width:0%;">0%</div></div>
-   <div>Option 3 <div id="poll-option3" style="background-color: lightcoral; height: 20px; width:0%;">0%</div></div>
-   <div>Option 4 <div id="poll-option4" style="background-color: lightgoldenrodyellow; height: 20px; width:0%;">0%</div></div>
- </div>
-    <div class="container" id="game">
-        <div class="timer">
-            <p id="run-time">0</p>
-        </div>
-        <div class="lifelines">
-            <button id="fifty-fifty"><img src="50-50.jpg" alt="50-50 lifeline" class="fifty_fifty"> <br>
-                <p class="name1">Fifty Fifty</p>
-            </button>
-            <button id="ask-the-audience"><img src="audiance_poll.jpg" alt="Ask the audience" class="audience"> <br>
-                <p class="name2">Ask the audience</p>
-            </button>
-        </div>
-        <div class="easy-level">
-            <!-- <img src="questionbg.jpeg" alt="Question background" class="questionbackground"> -->
-            <p class="ques-easy"> भारत का राष्ट्रीय खेल क्या है? </p> <br>
-            <button class="options" id="option1">क्रिकेट</button>
-            <button class="options" id="option2">फुटबॉल</button> <br>
-            <button class="options" id="option3">हॉकी</button>
-            <button class="options" id="option4">कबड्डी</button>
-        </div>
-        <div id="repeat">
-            <button>If question is repeat then click me! (only 5 times)</button>
-        </div>
-      
+            <button id="rules-next-btn" class="btn-primary">Next ➔</button>
+        </section>
 
-    </div>
+        <!-- SCREEN 3: Welcome / Ready Screen -->
+        <section id="screen-welcome" class="card-screen">
+            <div class="welcome-badge">🎯 Hot Seat Ready</div>
+            <h1 class="glow-title">Welcome to KBC</h1>
+            <p class="subtitle">Are you ready to play the ultimate trivia game? Press the button below to take the Hot Seat!</p>
+            <button id="startButton" class="btn-primary btn-large">🔥 Start Game</button>
+        </section>
 
-   <div class="button">
-    <button class="refresh">Play again</button>
-   </div>
+        <!-- SCREEN 4: Main Game Screen -->
+        <section id="screen-game" class="game-container">
+            
+            <!-- HUD: Stats & Lifelines -->
+            <div class="game-hud">
+                <div class="hud-stats">
+                    <div class="stat-pill">
+                        <span class="stat-label">Question</span>
+                        <span id="question-count" class="stat-value">#1</span>
+                    </div>
+                    <div class="stat-pill prize-pill">
+                        <span class="stat-label">Score</span>
+                        <span id="score-display" class="stat-value">₹ 0</span>
+                    </div>
+                </div>
+
+                <!-- Circular Timer -->
+                <div class="timer-wrapper">
+                    <div class="timer-circle" id="timer-box">
+                        <span id="run-time">45</span>
+                    </div>
+                </div>
+
+                <!-- Lifelines -->
+                <div class="lifelines">
+                    <button id="fifty-fifty" class="lifeline-btn" title="50:50 Lifeline">
+                        <img src="50-50.jpg" alt="50-50">
+                        <span class="lifeline-label">50:50</span>
+                    </button>
+                    <button id="ask-the-audience" class="lifeline-btn" title="Audience Poll">
+                        <img src="audiance_poll.jpg" alt="Audience Poll">
+                        <span class="lifeline-label">Audience Poll</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audience Poll Modal (Hidden by default) -->
+            <div id="poll-modal" class="poll-box">
+                <div class="poll-header">
+                    <span>📊 Audience Poll Results</span>
+                    <button id="close-poll" class="close-poll-btn">✕</button>
+                </div>
+                <div class="poll-bars">
+                    <div class="poll-row">
+                        <span class="poll-opt-label">A</span>
+                        <div class="poll-track"><div id="poll-option1" class="poll-fill"></div></div>
+                        <span id="poll-val1" class="poll-percent">0%</span>
+                    </div>
+                    <div class="poll-row">
+                        <span class="poll-opt-label">B</span>
+                        <div class="poll-track"><div id="poll-option2" class="poll-fill"></div></div>
+                        <span id="poll-val2" class="poll-percent">0%</span>
+                    </div>
+                    <div class="poll-row">
+                        <span class="poll-opt-label">C</span>
+                        <div class="poll-track"><div id="poll-option3" class="poll-fill"></div></div>
+                        <span id="poll-val3" class="poll-percent">0%</span>
+                    </div>
+                    <div class="poll-row">
+                        <span class="poll-opt-label">D</span>
+                        <div class="poll-track"><div id="poll-option4" class="poll-fill"></div></div>
+                        <span id="poll-val4" class="poll-percent">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="question-card">
+                <p id="question-text" class="ques-easy">भारत का राष्ट्रीय खेल क्या है?</p>
+            </div>
+
+            <!-- Status Feedback Banner -->
+            <div id="feedback-banner" class="feedback-banner"></div>
+
+            <!-- Options Grid (2x2 on Desktop, 1x4 on Mobile) -->
+            <div class="options-grid">
+                <button class="option-btn" id="option1" data-index="0">
+                    <span class="opt-prefix">A:</span>
+                    <span class="opt-text">क्रिकेट</span>
+                </button>
+                <button class="option-btn" id="option2" data-index="1">
+                    <span class="opt-prefix">B:</span>
+                    <span class="opt-text">फुटबॉल</span>
+                </button>
+                <button class="option-btn" id="option3" data-index="2">
+                    <span class="opt-prefix">C:</span>
+                    <span class="opt-text">हॉकी</span>
+                </button>
+                <button class="option-btn" id="option4" data-index="3">
+                    <span class="opt-prefix">D:</span>
+                    <span class="opt-text">कबड्डी</span>
+                </button>
+            </div>
+
+            <!-- Footer Actions (Skip Question) -->
+            <div class="game-footer">
+                <button id="skip-btn" class="btn-secondary">
+                    ⏭️ Skip / Change Question (<span id="skip-count">5</span> left)
+                </button>
+            </div>
+
+        </section>
+
+        <!-- SCREEN 5: Game Over Screen -->
+        <section id="screen-gameover" class="card-screen">
+            <div class="gameover-icon" id="gameover-emoji">🏆</div>
+            <h2 id="gameover-title" class="glow-title">Game Over!</h2>
+            <p id="gameover-reason" class="subtitle">You played a great game.</p>
+
+            <div class="summary-box">
+                <div class="summary-item">
+                    <span>Correct Answers</span>
+                    <strong id="final-correct">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Total Prize Won</span>
+                    <strong id="final-score" class="gold-text">₹ 0</strong>
+                </div>
+            </div>
+
+            <button id="play-again-btn" class="btn-primary btn-large">🔄 Play Again</button>
+        </section>
+
+    </main>
+
     <script src="main.js"></script>
 </body>
 
